@@ -1,5 +1,6 @@
 package com.ictidn.cita.ajoox;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,6 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+
+import javax.net.ssl.SSLEngineResult;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -29,10 +35,66 @@ public class ScrollingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Playing Music", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+                Intent i = new Intent(ScrollingActivity.this, Player.class);
+                startActivity(i);
+                finish();
             }
         });
+
+        LinearLayout artist = (LinearLayout) findViewById(R.id.layoutArtist);
+        artist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        LinearLayout album = (LinearLayout) findViewById(R.id.layoutAlbum);
+        album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        LinearLayout genre = (LinearLayout) findViewById(R.id.layoutGenre);
+        genre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        LinearLayout country = (LinearLayout) findViewById(R.id.layoutCountry);
+        country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        Button allsong = (Button) findViewById(R.id.allsongs);
+        allsong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScrollingActivity.this, ListActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        gridview.setAdapter(new ImageAdapter(this));
     }
 
     @Override

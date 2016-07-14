@@ -44,6 +44,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/layoutArtist"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -70,6 +71,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/layoutAlbum"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -104,6 +106,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/layoutGenre"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -130,6 +133,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/layoutCountry"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -175,10 +179,18 @@
             android:background="@android:color/white"/>
 
         <GridView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/gridView"
-            android:layout_margin="@dimen/text_margin"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="90dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:layout_margin="@dimen/text_margin">
+        </GridView>
 
         <Button
             android:layout_width="wrap_content"

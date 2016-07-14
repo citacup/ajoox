@@ -30,6 +30,32 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <!-- Player -->
+        <activity
+            android:name=".Player"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
+        </activity>
+
+        <!-- List Activity -->
+        <activity
+            android:name=".ListActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
+        </activity>
+
+        <!-- Grid Activity -->
+        <activity
+            android:name=".GridActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
+        </activity>
+
+        <service
+            android:enabled="true"
+            android:name=".BackgroundSoundService" />
+
     </application>
 
 </manifest>
