@@ -12,17 +12,21 @@ import android.widget.TextView;
 
 public class GridActivity extends Activity {
 
+    private AjooxData data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grid_layout);
+
+        data = new AjooxData(getApplicationContext());
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
         title.setTypeface(faceDea);
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), null));
     }
 
     @Override
@@ -32,4 +36,5 @@ public class GridActivity extends Activity {
         startActivity(i);
         finish();
     }
+
 }

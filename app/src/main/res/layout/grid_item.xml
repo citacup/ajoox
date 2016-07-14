@@ -15,7 +15,7 @@
         android:id="@+id/image_grid"
         android:background="@drawable/sound_icon"/>
 
-    <TextView android:id="@+id/TxtPackage"
+    <TextView android:id="@+id/txt_grid"
         android:gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

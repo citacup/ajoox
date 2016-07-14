@@ -5,43 +5,66 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * Created by ajou on 7/14/2016.
- */
+import java.util.ArrayList;
+
 public class ImageAdapter extends BaseAdapter {
-    private Context mContext;
+    private Context context;
+    private final ArrayList<String> txt;
+    private final ArrayList<String> img;
 
-    public ImageAdapter(Context c) {
-        mContext = c;
+    public ImageAdapter(Context context, ArrayList<String> txt, ArrayList<String> img) {
+        this.context = context;
+        this.txt = txt;
+        this.img = img;
     }
 
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View gridView;
+
+        if (convertView == null) {
+
+            gridView = new View(context);
+
+            // get layout from mobile.xml
+            gridView = inflater.inflate(R.layout.grid_item, null);
+
+            // set value into textview
+            TextView textView = (TextView) gridView
+                    .findViewById(R.id.txt_grid);
+            textView.setText(txt.get(position));
+
+            // set image based on selected text
+            ImageView imageView = (ImageView) gridView
+                    .findViewById(R.id.image_grid);
+
+        } else {
+            gridView = (View) convertView;
+        }
+
+        return gridView;
+    }
+
+    @Override
     public int getCount() {
-        return mThumbIds.length;
+        return txt.size();
     }
 
+    @Override
     public Object getItem(int position) {
         return null;
     }
 
+    @Override
     public long getItemId(int position) {
         return 0;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        //get the item corresponding to your position
-        LinearLayout row = (LinearLayout) (convertView == null ? LayoutInflater.from(mContext)
-                .inflate(R.layout.grid_item, parent, false) : convertView);
-        return row;
-    }
-
-    // references to our images
-    private Integer[] mThumbIds = {
-            android.R.mipmap.sym_def_app_icon, android.R.mipmap.sym_def_app_icon,
-            android.R.mipmap.sym_def_app_icon, android.R.mipmap.sym_def_app_icon
-    };
 }
 
