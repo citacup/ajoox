@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
-import javax.net.ssl.SSLEngineResult;
-
 public class ScrollingActivity extends AppCompatActivity {
 
     @Override
