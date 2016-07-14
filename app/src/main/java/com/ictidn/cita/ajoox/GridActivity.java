@@ -18,8 +18,8 @@ public class GridActivity extends Activity {
         setContentView(R.layout.grid_layout);
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
-        Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
-        title.setTypeface(faceDea);
+        Typeface faceDea1 = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
+        title.setTypeface(faceDea1);
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));

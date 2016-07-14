@@ -29,7 +29,7 @@ public class ListActivity extends Activity {
         // Listview Data
         String products[] = {"Backstreet Boys",
                 "Carly Rae Jepsen",
-                "Eminem",
+                "Emineme",
                 "Girls Generation",
                 "Calvin Harris",
                 "Kesha" };
