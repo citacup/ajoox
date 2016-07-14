@@ -27,8 +27,8 @@ public class Player extends Activity {
         setContentView(R.layout.player);
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
-        Typeface faceDeaa = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
-        title.setTypeface(faceDeaa);
+        Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
+        title.setTypeface(faceDea);
     }
 
     @Override
