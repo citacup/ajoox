@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView1"
                         android:src="@drawable/artist"
-                        android:onClick="selectCategory"/>
+                        android:onClick="searchBy"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView2"
                         android:src="@drawable/folder"
-                        android:onClick="selectCategory"/>
+                        android:onClick="searchBy"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView3"
                         android:src="@drawable/genre"
-                        android:onClick="selectCategory"/>
+                        android:onClick="searchBy"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView4"
                         android:src="@drawable/country"
-                        android:onClick="selectCategory"/>
+                        android:onClick="searchBy"/>
 
                     <TextView
                         android:layout_width="wrap_content"

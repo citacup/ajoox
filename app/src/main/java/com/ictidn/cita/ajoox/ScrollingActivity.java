@@ -117,4 +117,29 @@ public class ScrollingActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void searchBy(View v) {
+        switch (v.getId()) {
+            case (R.id.imageView1):
+                Intent i1 = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i1);
+                finish();
+                break;
+            case (R.id.imageView2):
+                Intent i2 = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i2);
+                finish();
+                break;
+            case (R.id.imageView3):
+                Intent i3 = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i3);
+                finish();
+                break;
+            case (R.id.imageView4):
+                Intent i4 = new Intent(ScrollingActivity.this, GridActivity.class);
+                startActivity(i4);
+                finish();
+                break;
+        }
+    }
 }
