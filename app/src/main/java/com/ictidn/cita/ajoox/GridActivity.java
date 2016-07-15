@@ -45,11 +45,11 @@ public class GridActivity extends Activity {
                 break;
             case "genre":
                 typeText.setText("All Genre");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.genre));
+                gridview.setAdapter(new ImageAdapter(this, data.getGenre(""), R.drawable.sound_icon));
                 break;
             case "country":
                 typeText.setText("All Country");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.country));
+                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.sound_icon));
                 break;
         }
 
