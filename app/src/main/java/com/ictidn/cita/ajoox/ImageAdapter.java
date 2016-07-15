@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class ImageAdapter extends BaseAdapter {
     private Context context;
     private final ArrayList<String> txt;
-    private final ArrayList<String> img;
+    private final int img;
 
-    public ImageAdapter(Context context, ArrayList<String> txt, ArrayList<String> img) {
+    public ImageAdapter(Context context, ArrayList<String> txt, int img) {
         this.context = context;
         this.txt = txt;
         this.img = img;
@@ -43,6 +43,7 @@ public class ImageAdapter extends BaseAdapter {
             // set image based on selected text
             ImageView imageView = (ImageView) gridView
                     .findViewById(R.id.image_grid);
+            imageView.setImageResource(img);
 
         } else {
             gridView = (View) convertView;

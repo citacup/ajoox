@@ -19,7 +19,7 @@
         jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="24.0.0"
-        sha1="2377a4b2981d0666fcb2ebf6046b77e6ce71428f">
+        sha1="322dba5d59947f203989a918200c01fecbb1c7e4">
         <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_08e1c9d752b656898c509ff373d44c8bbd935167\classes.dex" />
     </item>
     <item
@@ -68,7 +68,7 @@
         jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.0"
-        sha1="52340f3a89a1b46021529945816a1d391a406915">
+        sha1="ac0b51620a5b0f270796a5b56a3b32974597b676">
         <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a807fd9f64553629dc5b22e6adb489299c874d8e\classes.dex" />
     </item>
 

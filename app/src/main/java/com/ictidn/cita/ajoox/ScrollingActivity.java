@@ -108,7 +108,7 @@ public class ScrollingActivity extends AppCompatActivity {
         });
 
         GridView gridview = (GridView) findViewById(R.id.gridView);
-        gridview.setAdapter(new ImageAdapter(this, data.getSong(""), null));
+        gridview.setAdapter(new ImageAdapter(this, data.getSong(""), R.drawable.sound_icon));
 
     }
 

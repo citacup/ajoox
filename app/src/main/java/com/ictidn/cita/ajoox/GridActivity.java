@@ -37,19 +37,19 @@ public class GridActivity extends Activity {
         switch (type) {
             case "artist":
                 typeText.setText("All Artist");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), null));
+                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.artist));
                 break;
             case "album":
                 typeText.setText("All Album");
-                gridview.setAdapter(new ImageAdapter(this, data.getAlbum(""), null));
+                gridview.setAdapter(new ImageAdapter(this, data.getAlbum(""), R.drawable.folder));
                 break;
             case "genre":
                 typeText.setText("All Genre");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), null));
+                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.sound_icon));
                 break;
             case "country":
                 typeText.setText("All Country");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), null));
+                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.sound_icon));
                 break;
         }
 
