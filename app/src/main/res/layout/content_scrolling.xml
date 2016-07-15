@@ -168,7 +168,8 @@
             android:layout_marginRight="@dimen/text_margin"
             android:layout_marginBottom="8dp"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="TOP SONG"
+            android:text="Top Songs"
+            android:textStyle="bold"
             android:textColor="@android:color/white"/>
 
         <View

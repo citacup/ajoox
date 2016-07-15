@@ -58,6 +58,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","artist");
                 startActivity(i);
                 finish();
             }
@@ -68,6 +69,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","album");
                 startActivity(i);
                 finish();
             }
@@ -78,6 +80,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","genre");
                 startActivity(i);
                 finish();
             }
@@ -88,6 +91,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","country");
                 startActivity(i);
                 finish();
             }

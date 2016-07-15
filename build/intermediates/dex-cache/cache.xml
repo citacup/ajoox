@@ -1,3 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_0d7737b2b2d61dabd4dfd99bdbfe8ba636eb8f5e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0_8447bda81c91d80c3234c9db8146df48b89b1e1e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2377a4b2981d0666fcb2ebf6046b77e6ce71428f">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_08e1c9d752b656898c509ff373d44c8bbd935167\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.0.0_4db71e2d07eb170ba92737e9adb5ae352c963810\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\design\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.0.0_68f2ac095f34bd0fe312a59d568185d296530e1f\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.0.0\2943c74db6d4346ab8c6531adac91fa05c137c40\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_ed5119259463504df0e6ca0610d173f7bf1f7472\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0_d23b12152d3e1e6c26f1d781eb327a6d646813d1\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0_0809c9d95d831a6329173933ef940970deeae950\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0_916e96a99113df31a3d4c884d4bfccee9853a3f7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="52340f3a89a1b46021529945816a1d391a406915">
+        <dex dex="C:\Users\ajou\Documents\Ajoox\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a807fd9f64553629dc5b22e6adb489299c874d8e\classes.dex" />
+    </item>
+
+</items>
