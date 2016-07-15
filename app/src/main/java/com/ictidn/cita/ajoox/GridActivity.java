@@ -45,7 +45,7 @@ public class GridActivity extends Activity {
                 break;
             case "genre":
                 typeText.setText("All Genre");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), null));
+                gridview.setAdapter(new ImageAdapter(this, data.getGenre(""), null));
                 break;
             case "country":
                 typeText.setText("All Country");

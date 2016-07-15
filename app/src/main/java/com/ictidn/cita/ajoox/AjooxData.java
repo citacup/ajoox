@@ -171,7 +171,7 @@ public class AjooxData extends SQLiteOpenHelper {
 
         String fetchdata = "select * from " + ARTIST + " where " + ARTIST_NAME + "='" + name + "'";
         if (name.equals("")) {
-            fetchdata = "select * from " + ARTIST;
+            fetchdata = "select from " + ARTIST;
         }
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
@@ -206,6 +206,25 @@ public class AjooxData extends SQLiteOpenHelper {
         return listAlbum;
     }
 
+    public ArrayList<String> getGenre(String name){
+        ArrayList<String> listGenre = new ArrayList<String>();
+
+        String fetchdata = "select * from " + SONGS + " where " + GENRE + "='" + name + "'";
+        if (name.equals("")) {
+            fetchdata = "select distinct "+ GENRE +" from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listGenre.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        return listGenre;
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
         // TODO Auto-generated method stub
