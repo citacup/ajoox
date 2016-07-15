@@ -171,7 +171,7 @@ public class AjooxData extends SQLiteOpenHelper {
 
         String fetchdata = "select * from " + ARTIST + " where " + ARTIST_NAME + "='" + name + "'";
         if (name.equals("")) {
-            fetchdata = "select from " + ARTIST;
+            fetchdata = "select * from " + ARTIST;
         }
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
