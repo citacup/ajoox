@@ -66,6 +66,8 @@ public class AjooxData extends SQLiteOpenHelper {
         insertAlbum(albumSeeder(), db);
     }
 
+    //-------------------------------PREPARE DATA AND INSERT---------------------------------
+
     private ArrayList<Song> songSeeder(){
         song = new ArrayList<Song>();
         song.add(new Song("Fly", "Ballad", "path", 1, 1));
@@ -138,27 +140,11 @@ public class AjooxData extends SQLiteOpenHelper {
         }
     }
 
-    /*private Cursor getSongsListCursor(){
-        Cursor cursor = dbRead.query(SONGS, FROM, null, null, null, null, ORDER_BY);
-        startManagingCursor(cursor);
-        dbRead.close();
-        return cursor;
-
-    }
-
-    private ArrayList<String> getSongsList(Cursor c){
-        ArrayList<String> result = new ArrayList<String>();
-        while(c.moveToNext()){
-            String judul = c.getString(1);
-            result.add(judul);
-        }
-        return result;
-
-    }*/
-
     public void drop(){
         this.getReadableDatabase().execSQL("DROP TABLE IF EXISTS " + SONGS);
     }
+
+    //--------------------------------QUERY START HERE-------------------------------------
 
     public ArrayList<String> getSong(String name) {
         ArrayList<String> listSong = new ArrayList<String>();
@@ -174,8 +160,7 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listSong.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listSong;
@@ -195,8 +180,7 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listArtist.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listArtist;
@@ -216,8 +200,7 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listAlbum.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listAlbum;
