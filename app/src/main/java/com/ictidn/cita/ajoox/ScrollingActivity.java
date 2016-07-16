@@ -97,12 +97,13 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
 
-        Button allsong = (Button) findViewById(R.id.allsongs);
-        allsong.setOnClickListener(new View.OnClickListener() {
+        final Button all_song_button = (Button) findViewById(R.id.allsongs);
+        all_song_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, ListActivity.class);
-                startActivity(i);
+                i.putExtra("button","allsongs");
+                ScrollingActivity.this.startActivity(i);
                 finish();
             }
         });

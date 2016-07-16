@@ -202,7 +202,6 @@
             android:layout_gravity="center_horizontal"
             android:text="All Songs"
             android:id="@+id/allsongs"
-            android:onClick="allSongs"
             android:background="@drawable/button"
             android:textColor="@android:color/white" />
     </LinearLayout>

@@ -48,8 +48,8 @@ public class GridActivity extends Activity {
                 gridview.setAdapter(new ImageAdapter(this, data.getGenre(""), R.drawable.sound_icon));
                 break;
             case "country":
-                typeText.setText("All Country");
-                gridview.setAdapter(new ImageAdapter(this, data.getArtist(""), R.drawable.sound_icon));
+                typeText.setText("All Year");
+                gridview.setAdapter(new ImageAdapter(this, data.getReleaseYear(""), R.drawable.sound_icon));
                 break;
         }
 

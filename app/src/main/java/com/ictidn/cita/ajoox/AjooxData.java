@@ -55,7 +55,7 @@ public class AjooxData extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + ALBUMS + " ("
                 + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ALBUMNAME + " TEXT,"
-                + RELEASE_DATE + " DATE,"
+                + RELEASE_DATE + " TEXT,"
                 + LABEL + " TEXT,"
                 + ID_ALBUM_ARTIST + " INTEGER,"
                 + "FOREIGN KEY(" + ID_ALBUM_ARTIST + ") REFERENCES " + ARTIST + "(" + _ID + "));"
@@ -225,6 +225,27 @@ public class AjooxData extends SQLiteOpenHelper {
 
         return listGenre;
     }
+
+    public ArrayList<String> getReleaseYear(String name){
+        ArrayList<String> listYear = new ArrayList<String>();
+
+        String fetchdata = "select * from " + ALBUMS + " where " + RELEASE_DATE + "='" + name + "'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + ALBUMS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listYear.add(cursor.getString(3));
+            } while (cursor.moveToNext());
+        }
+
+        return listYear;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
         // TODO Auto-generated method stub
