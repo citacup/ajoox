@@ -10,6 +10,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,6 +38,35 @@ public class ScrollingActivity extends AppCompatActivity {
 
         data = new AjooxData(getApplicationContext());
 
+        final SearchView searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setQueryHint("Search Song");
+
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                Toast.makeText(getBaseContext(), searchView.getQuery().toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+              //  Toast.makeText(getBaseContext(), searchView.getQuery().toString(),
+              //          Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(ScrollingActivity.this, ListActivity.class);
+                i.putExtra("button", "query");
+                i.putExtra("keyword", searchView.getQuery().toString());
+                startActivity(i);
+                finish();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         collapsingToolbar.setCollapsedTitleTypeface(faceDea);

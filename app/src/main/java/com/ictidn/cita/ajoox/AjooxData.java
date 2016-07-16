@@ -385,7 +385,7 @@ public class AjooxData extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        Cursor cursor = sqLiteDatabase. rawQuery(fetchdata, null);
         if (cursor.moveToFirst()) {
             //Log.d("cursor song", "tidak null");
             do {
@@ -455,8 +455,171 @@ public class AjooxData extends SQLiteOpenHelper {
                 listYear.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
-
+        sqLiteDatabase.close();
         return listYear;
+    }
+
+    public ArrayList<String> searchBySong(String query){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+TITLE+" from " + SONGS + " where "+TITLE+" like \"%"+query+"%\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+
+    public ArrayList<String> searchByArtist(String query){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+ARTIST_NAME+" from " + ARTIST + " where "+ARTIST_NAME+" like \"%"+query+"%\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByArtist(String query, String artist){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+TITLE+" from " + ARTIST + ","+SONGS+" where "+TITLE+" like \"%"+query+"%\" and "+ARTIST_NAME+" = \""+artist+"\" and "+SONGS+"."+ID_ARTIST+" = " + ARTIST+"._id";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByAlbum(String query){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+ALBUMNAME+" from " + ALBUMS + " where "+ALBUMNAME+" like \"%"+query+"%\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByAlbum(String query, String album){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+TITLE+" from " + ALBUMS + ","+SONGS+" where "+TITLE+" like \"%"+query+"%\" and " + ALBUMNAME+ " = \"" + album+"\" and "+SONGS+"."+ID_ALBUM+" = "+ALBUMS+"._id";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByGenre(String query){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+GENRE+" from " + SONGS + " where "+GENRE+" like \"%"+query+"%\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByGenre(String query, String genre){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+TITLE+" from " + SONGS + " where "+TITLE+" like \"%"+query+"%\" and "+GENRE+ " = \""+genre+"\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByYear(String query){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+RELEASE_DATE+" from " + ALBUMS + " where "+RELEASE_DATE+" like \"%"+query+"%\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
+    }
+
+    public ArrayList<String> searchByYear(String query, String year){
+        ArrayList<String> search_result = new ArrayList<String>();
+
+        String fetchdata ="";
+        fetchdata = "select distinct "+TITLE+" from " + ALBUMS +" , "+SONGS+ " where "+TITLE+" like \"%"+query+"%\" and "+RELEASE_DATE+" = \"" + year+"\" and "+SONGS+"."+ID_ALBUM+" = "+ALBUMS+"._id";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                search_result.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+
+        }
+        sqLiteDatabase.close();
+        return search_result;
     }
 
     @Override
