@@ -16,11 +16,21 @@ public class ListActivity extends Activity {
     private ListView lv;
     // Listview Adapter
     ArrayAdapter<String> adapter;
+    AjooxData data;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_layout);
+
+        data = new AjooxData(getApplicationContext());
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("button");
+            //The key argument here must match that used in the other activity
+            type = value;
+        }
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
@@ -35,9 +45,14 @@ public class ListActivity extends Activity {
                 "Kesha" };
 
         lv = (ListView) findViewById(R.id.list_view);
-
+        TextView title_listview = (TextView) findViewById(R.id.title_listview);
+        switch (type) {
+            case "allsongs":
+                title_listview.setText("All Songs");
+                adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, data.getSong(""));
+                break;
+        }
         // Adding items to listview
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, products);
         lv.setAdapter(adapter);
     }
 

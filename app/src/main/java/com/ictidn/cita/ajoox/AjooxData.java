@@ -55,7 +55,7 @@ public class AjooxData extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + ALBUMS + " ("
                 + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ALBUMNAME + " TEXT,"
-                + RELEASE_DATE + " DATE,"
+                + RELEASE_DATE + " TEXT,"
                 + LABEL + " TEXT,"
                 + ID_ALBUM_ARTIST + " INTEGER,"
                 + "FOREIGN KEY(" + ID_ALBUM_ARTIST + ") REFERENCES " + ARTIST + "(" + _ID + "));"
@@ -65,6 +65,8 @@ public class AjooxData extends SQLiteOpenHelper {
         insertArtist(artistSeeder(), db);
         insertAlbum(albumSeeder(), db);
     }
+
+    //-------------------------------PREPARE DATA AND INSERT---------------------------------
 
     private ArrayList<Song> songSeeder(){
         song = new ArrayList<Song>();
@@ -138,27 +140,11 @@ public class AjooxData extends SQLiteOpenHelper {
         }
     }
 
-    /*private Cursor getSongsListCursor(){
-        Cursor cursor = dbRead.query(SONGS, FROM, null, null, null, null, ORDER_BY);
-        startManagingCursor(cursor);
-        dbRead.close();
-        return cursor;
-
-    }
-
-    private ArrayList<String> getSongsList(Cursor c){
-        ArrayList<String> result = new ArrayList<String>();
-        while(c.moveToNext()){
-            String judul = c.getString(1);
-            result.add(judul);
-        }
-        return result;
-
-    }*/
-
     public void drop(){
         this.getReadableDatabase().execSQL("DROP TABLE IF EXISTS " + SONGS);
     }
+
+    //--------------------------------QUERY START HERE-------------------------------------
 
     public ArrayList<String> getSong(String name) {
         ArrayList<String> listSong = new ArrayList<String>();
@@ -174,8 +160,7 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listSong.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listSong;
@@ -195,8 +180,7 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listArtist.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listArtist;
@@ -216,11 +200,50 @@ public class AjooxData extends SQLiteOpenHelper {
             //Log.d("cursor song", "tidak null");
             do {
                 listAlbum.add(cursor.getString(1));
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return listAlbum;
+    }
+
+    public ArrayList<String> getGenre(String name){
+        ArrayList<String> listGenre = new ArrayList<String>();
+
+        String fetchdata = "select * from " + SONGS + " where " + GENRE + "='" + name + "'";
+        if (name.equals("")) {
+            fetchdata = "select distinct "+ GENRE +" from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listGenre.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        return listGenre;
+    }
+
+    public ArrayList<String> getReleaseYear(String name){
+        ArrayList<String> listYear = new ArrayList<String>();
+
+        String fetchdata = "select * from " + ALBUMS + " where " + RELEASE_DATE + "='" + name + "'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + ALBUMS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listYear.add(cursor.getString(3));
+            } while (cursor.moveToNext());
+        }
+
+        return listYear;
     }
 
     @Override

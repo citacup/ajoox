@@ -58,6 +58,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","artist");
                 startActivity(i);
                 finish();
             }
@@ -68,6 +69,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","album");
                 startActivity(i);
                 finish();
             }
@@ -78,6 +80,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","genre");
                 startActivity(i);
                 finish();
             }
@@ -88,23 +91,25 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
+                i.putExtra("button","country");
                 startActivity(i);
                 finish();
             }
         });
 
-        Button allsong = (Button) findViewById(R.id.allsongs);
-        allsong.setOnClickListener(new View.OnClickListener() {
+        final Button all_song_button = (Button) findViewById(R.id.allsongs);
+        all_song_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, ListActivity.class);
-                startActivity(i);
+                i.putExtra("button","allsongs");
+                ScrollingActivity.this.startActivity(i);
                 finish();
             }
         });
 
         GridView gridview = (GridView) findViewById(R.id.gridView);
-        gridview.setAdapter(new ImageAdapter(this, data.getSong(""), null));
+        gridview.setAdapter(new ImageAdapter(this, data.getSong(""), R.drawable.sound_icon));
 
     }
 
