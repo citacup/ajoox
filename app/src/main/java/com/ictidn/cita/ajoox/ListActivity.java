@@ -27,9 +27,16 @@ public class ListActivity extends Activity {
         data = new AjooxData(getApplicationContext());
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String value = extras.getString("button");
-            //The key argument here must match that used in the other activity
-            type = value;
+            if(extras.getString("button")==null){
+
+            }
+            else
+            {
+                String value = extras.getString("button");
+                //The key argument here must match that used in the other activity
+                type = value;
+            }
+
         }
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);

@@ -7,8 +7,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GridActivity extends Activity {
 
@@ -52,6 +55,19 @@ public class GridActivity extends Activity {
                 gridview.setAdapter(new ImageAdapter(this, data.getReleaseYear(""), R.drawable.sound_icon));
                 break;
         }
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+              //  String item = adapterView.getItemAtPosition(i).toString();
+                TextView t = (TextView) adapterView.findViewById(R.id.txt_grid);
+                //Toast.makeText(getApplicationContext(),""+t.getText().toString(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GridActivity.this, ListActivity.class);
+                intent.putExtra("artist",t.getText().toString());
+                GridActivity.this.startActivity(intent);
+                finish();
+            }
+        });
+
 
 
     }
