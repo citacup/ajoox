@@ -12,16 +12,24 @@ import android.widget.TextView;
  */
 public class Player extends Activity {
 
-    Intent svc = null;
-
+    //Intent svc = null;
+    AjooxData data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //sound background
-        svc = new Intent(this, BackgroundSoundService.class);
+        //svc = new Intent(this, BackgroundSoundService.class);
 
         //set view
         setContentView(R.layout.player);
+
+        data = new AjooxData(getApplicationContext());
+        Bundle extras = getIntent().getExtras();
+
+        ((TextView) findViewById(R.id.textArtist)).setText(extras.getString("artist"));
+        ((TextView) findViewById(R.id.textTitle)).setText(extras.getString("title"));
+        ((TextView) findViewById(R.id.textViewAlbum)).setText(extras.getString("album"));
+        ((TextView) findViewById(R.id.textPath)).setText(extras.getString("path"));
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");
@@ -31,7 +39,7 @@ public class Player extends Activity {
     @Override
     protected void onDestroy() {
         //stop background
-        stopService(svc);
+        //stopService(svc);
         super.onDestroy();
     }
 
@@ -43,6 +51,7 @@ public class Player extends Activity {
         finish();
     }
 
+    /**
     public void media(View v) {
         switch (v.getId()) {
             case (R.id.play):
@@ -50,6 +59,6 @@ public class Player extends Activity {
             case (R.id.pause):
                 stopService(svc);
         }
-    }
+    }**/
 
 }

@@ -8,7 +8,7 @@ public class Album {
     String album_name, release_year, label;
     int id_artist;
 
-    public Album(String album_name, String label, String release_year, int id_artist) {
+    public Album(String album_name, String release_year, String label, int id_artist) {
         this.album_name = album_name;
         this.label = label;
         this.release_year = release_year;

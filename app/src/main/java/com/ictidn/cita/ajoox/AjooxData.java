@@ -70,16 +70,16 @@ public class AjooxData extends SQLiteOpenHelper {
 
     private ArrayList<Song> songSeeder(){
         song = new ArrayList<Song>();
-        song.add(new Song("Fly", "Ballad", "path", 1, 1));
-        song.add(new Song("Big Mini World", "Ballad", "path", 1, 1));
-        song.add(new Song("Why", "Dance", "path", 2, 2));
-        song.add(new Song("Starlight", "Ballad", "path", 2, 2));
-        song.add(new Song("Lion Heart", "Dance", "path", 3, 3));
-        song.add(new Song("You Think" , "Dance", "path", 3, 3));
-        song.add(new Song("PARTY" , "Dance", "path", 3, 3));
-        song.add(new Song("RUN" , "Dance", "path", 4, 4));
-        song.add(new Song("FIRE" , "Dance", "path", 4, 4));
-        song.add(new Song("DOPE" , "Dance", "path", 4, 4));
+        song.add(new Song("Fly", "Ballad", "/mnt/sdcard/fly.mp3", 1, 1));
+        song.add(new Song("Big Mini World", "Ballad", "/mnt/sdcard/bigminiworld.mp3", 1, 1));
+        song.add(new Song("Why", "Dance", "/mnt/sdcard/why.mp3", 2, 2));
+        song.add(new Song("Starlight", "Ballad", "/mnt/sdcard/starligt.mp3", 2, 2));
+        song.add(new Song("Lion Heart", "Dance", "/mnt/sdcard/lion.mp3", 3, 3));
+        song.add(new Song("You Think" , "Dance", "/mnt/sdcard/youthink.mp3", 3, 3));
+        song.add(new Song("PARTY" , "Dance", "/mnt/sdcard/party.mp3", 3, 3));
+        song.add(new Song("RUN" , "Dance", "/mnt/sdcard/run.mp3", 4, 4));
+        song.add(new Song("FIRE" , "Dance", "/mnt/sdcard/fire.mp3", 4, 4));
+        song.add(new Song("DOPE" , "Dance", "/mnt/sdcard/dope.mp3", 4, 4));
         return song;
     }
 
@@ -166,6 +166,175 @@ public class AjooxData extends SQLiteOpenHelper {
         return listSong;
     }
 
+    public String getSongById(int name) {
+
+        String res="";
+        String fetchdata = "select * from " + SONGS + " where " + _ID + "='" + (name+1) + "'";
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                res = cursor.getString(1);
+            } while (cursor.moveToNext());
+        }
+
+        return res;
+    }
+
+    public ArrayList<String> getSongByGenre(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        String fetchdata = "select * from " + SONGS + " where " + GENRE + "='" + name + "'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+    public ArrayList<String> getSongByYear(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        String fetchdata = "select * from "+ SONGS + " left join "+ ARTIST +" on "+ SONGS +"."+ ID_ARTIST +"="+ ARTIST +"."+ _ID +" left join "+ ALBUMS +" on "+ ARTIST +"."+ _ID  +"="+ ALBUMS+ "."+ID_ALBUM_ARTIST+" where " + RELEASE_DATE +"='"+name +"'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+
+
+    public ArrayList<String> getSongByArtist(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        //String fetchdata = "select * from " + SONGS + " where " + ARTIST_NAME + "='" + name + "'";
+        String fetchdata = "select * from " + SONGS + " INNER JOIN " + ARTIST + " ON " + SONGS +"."+ ID_ARTIST +"="+ARTIST+"."+_ID+" WHERE " + ARTIST_NAME +"='" + name +"'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+    public ArrayList<String> getAlbumBySong(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        //String fetchdata = "select * from " + SONGS + " where " + ARTIST_NAME + "='" + name + "'";
+        String fetchdata = "select * from " + ALBUMS + " INNER JOIN " + SONGS + " ON " + SONGS +"."+ ID_ALBUM +"="+ALBUMS+"."+_ID+" WHERE " + TITLE +"='" + name +"'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+    public ArrayList<String> getArtistBySong(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        //String fetchdata = "select * from " + SONGS + " where " + ARTIST_NAME + "='" + name + "'";
+        String fetchdata = "select * from " + ARTIST + " INNER JOIN " + SONGS + " ON " + SONGS +"."+ ID_ARTIST +"="+ARTIST+"."+_ID+" WHERE " + TITLE +"='" + name +"'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+    public ArrayList<String> getPathBySong(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        //String fetchdata = "select * from " + SONGS + " where " + ARTIST_NAME + "='" + name + "'";
+        String fetchdata = "select * from " + SONGS + " WHERE "+ TITLE +"='"+ name +"'";
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(3));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
+
+
+    public ArrayList<String> getSongByAlbum(String name) {
+        ArrayList<String> listSong = new ArrayList<String>();
+
+        //String fetchdata = "select * from " + SONGS + " where " + ARTIST_NAME + "='" + name + "'";
+        //String fetchdata = "select * from " + SONGS + " INNER JOIN " + ALBUMS + " ON " + SONGS +"."+ ID_ARTIST +"="+ARTIST+"."+_ID+" WHERE " + ARTIST_NAME +"='" + name +"'";
+
+        String fetchdata = "select * from "+ SONGS + " left join "+ ARTIST +" on "+ SONGS +"."+ ID_ARTIST +"="+ ARTIST +"."+ _ID +" left join "+ ALBUMS +" on "+ ARTIST +"."+ _ID  +"="+ ALBUMS+ "."+ID_ALBUM_ARTIST+" where " + ALBUMNAME +"='"+name +"'";
+
+        if (name.equals("")) {
+            fetchdata = "select * from " + SONGS;
+        }
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                listSong.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        return listSong;
+    }
+
     public ArrayList<String> getArtist(String name) {
         ArrayList<String> listArtist = new ArrayList<String>();
 
@@ -186,6 +355,27 @@ public class AjooxData extends SQLiteOpenHelper {
         return listArtist;
     }
 
+    public String getArtistById(int id) {
+        String res="";
+        String fetchdata = "select * from " + ARTIST + " where " + _ID + "='" + (id+1) + "'";
+
+        /**
+        if (name.equals("")) {
+            fetchdata = "select * from " + ARTIST;
+        }**/
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                res = cursor.getString(1);
+            } while (cursor.moveToNext());
+        }
+
+        return res;
+    }
+
     public ArrayList<String> getAlbum(String name) {
         ArrayList<String> listAlbum = new ArrayList<String>();
 
@@ -204,6 +394,27 @@ public class AjooxData extends SQLiteOpenHelper {
         }
 
         return listAlbum;
+    }
+
+    public String getAlbumById(int id) {
+        String res="";
+        String fetchdata = "select * from " + ALBUMS + " where " + _ID + "='" + (id+1) + "'";
+
+        /**
+         if (name.equals("")) {
+         fetchdata = "select * from " + ARTIST;
+         }**/
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+        if (cursor.moveToFirst()) {
+            //Log.d("cursor song", "tidak null");
+            do {
+                res = cursor.getString(1);
+            } while (cursor.moveToNext());
+        }
+
+        return res;
     }
 
     public ArrayList<String> getGenre(String name){
@@ -229,17 +440,19 @@ public class AjooxData extends SQLiteOpenHelper {
     public ArrayList<String> getReleaseYear(String name){
         ArrayList<String> listYear = new ArrayList<String>();
 
-        String fetchdata = "select * from " + ALBUMS + " where " + RELEASE_DATE + "='" + name + "'";
+        String fetchdata ="";
         if (name.equals("")) {
-            fetchdata = "select * from " + ALBUMS;
+            //fetchdata = "select * from "+ALBUMS+" inner join (select max("+_ID+") as maxID,"+RELEASE_DATE+" from "+ALBUMS+" group by "+RELEASE_DATE+") maxID on maxID.maxID ="+ALBUMS +"."+_ID+"";
+            fetchdata = "select distinct "+RELEASE_DATE+" from " + ALBUMS;
         }
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+
         if (cursor.moveToFirst()) {
             //Log.d("cursor song", "tidak null");
             do {
-                listYear.add(cursor.getString(3));
+                listYear.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
 

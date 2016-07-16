@@ -91,7 +91,7 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScrollingActivity.this, GridActivity.class);
-                i.putExtra("button","country");
+                i.putExtra("button","year");
                 startActivity(i);
                 finish();
             }
