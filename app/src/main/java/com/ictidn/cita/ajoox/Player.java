@@ -3,8 +3,10 @@ package com.ictidn.cita.ajoox;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -30,6 +32,29 @@ public class Player extends Activity {
         ((TextView) findViewById(R.id.textTitle)).setText(extras.getString("title"));
         ((TextView) findViewById(R.id.textViewAlbum)).setText(extras.getString("album"));
         ((TextView) findViewById(R.id.textPath)).setText(extras.getString("path"));
+
+
+
+
+        final MediaPlayer mPlayer = MediaPlayer.create(Player.this, R.raw.happy);
+        if(mPlayer.isPlaying()){
+            mPlayer.stop();
+        }
+        mPlayer.start();
+
+        ((ImageButton) findViewById(R.id.pause)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPlayer.pause();
+            }
+        });
+
+        ((ImageButton) findViewById(R.id.play)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPlayer.start();
+            }
+        });
 
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         Typeface faceDea = Typeface.createFromAsset(getAssets(), "fonts/deathstar.otf");

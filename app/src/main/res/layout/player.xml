@@ -119,15 +119,13 @@
                 android:id="@+id/backward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_previous"
-                android:onClick="media"/>
+                android:background="@android:drawable/ic_media_previous"/>
 
             <ImageButton
                 android:id="@+id/rew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_rew"
-                android:onClick="media"/>
+                android:background="@android:drawable/ic_media_rew"/>
 
             <ImageButton
                 android:id="@+id/play"
@@ -147,15 +145,13 @@
                 android:id="@+id/ff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_ff"
-                android:onClick="media"/>
+                android:background="@android:drawable/ic_media_ff" />
 
             <ImageButton
                 android:id="@+id/forward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_next"
-                android:onClick="media"/>
+                android:background="@android:drawable/ic_media_next"/>
 
         </LinearLayout>
 
